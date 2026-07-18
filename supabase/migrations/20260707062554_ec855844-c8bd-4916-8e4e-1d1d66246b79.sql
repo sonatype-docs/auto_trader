@@ -1,0 +1,1 @@
+ALTER TABLE public.strategy_settings ALTER COLUMN entry_depth_pct SET DEFAULT 0.15, ALTER COLUMN sl_depth_pct SET DEFAULT 0.60; UPDATE public.strategy_settings SET entry_depth_pct = 0.15, sl_depth_pct = 0.60, updated_at = now() WHERE id = true;

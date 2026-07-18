@@ -1,0 +1,1 @@
+UPDATE public.pipeline_runs SET status='stopped', finished_at=now(), error='Client orchestrator went silent — browser tab closed/suspended (auto-marked)' WHERE id='5a2bfd2e-abc4-4685-9fab-a202e77ea67e' AND status='running';

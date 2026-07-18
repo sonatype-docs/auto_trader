@@ -1,0 +1,1 @@
+UPDATE live_trades SET status='queued', error=NULL, entry_ts=now() WHERE id IN ('9e02203e-6c94-4eb8-8990-88fbb0e3abdb','13de1564-97f6-43f2-b5b5-4cf251b22c04');

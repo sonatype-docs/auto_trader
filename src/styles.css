@@ -1,0 +1,447 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource/work-sans/400.css";
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/work-sans/600.css";
+@import "@fontsource/work-sans/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Shark Auto-Trader — Charcoal & Ember terminal.
+ * Deep neutral surfaces, warm ember accent, bento-grid geometry,
+ * JetBrains Mono display + Work Sans body.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-long: var(--long);
+  --color-short: var(--short);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-brand-ember:   var(--brand-ember);
+  --color-brand-flame:   var(--brand-flame);
+  --color-brand-copper:  var(--brand-copper);
+  --color-brand-violet:  var(--brand-violet);
+  --color-brand-charcoal: var(--brand-charcoal);
+}
+
+/* Light theme — Sunset Blaze on warm paper */
+:root {
+  --radius: 0.75rem;
+  --brand-flame:    oklch(0.72 0.20 40);    /* #ff6b35 orange */
+  --brand-ember:    oklch(0.78 0.16 65);    /* #f7931e amber */
+  --brand-copper:   oklch(0.63 0.24 356);   /* #e84393 magenta */
+  --brand-violet:   oklch(0.58 0.22 285);   /* #6c5ce7 violet */
+  --brand-charcoal: oklch(0.28 0.01 60);
+
+  --background: oklch(0.985 0.005 50);
+  --foreground: oklch(0.18 0.01 300);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 300);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 300);
+  --primary: var(--brand-copper);
+  --primary-foreground: oklch(0.99 0.002 0);
+  --secondary: oklch(0.96 0.02 45);
+  --secondary-foreground: oklch(0.22 0.01 300);
+  --muted: oklch(0.955 0.01 50);
+  --muted-foreground: oklch(0.48 0.02 300);
+  --accent: oklch(0.94 0.07 40);
+  --accent-foreground: oklch(0.32 0.18 356);
+  --destructive: oklch(0.62 0.24 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --success: oklch(0.68 0.18 150);
+  --success-foreground: oklch(0.14 0.02 150);
+  --warning: oklch(0.78 0.17 70);
+  --warning-foreground: oklch(0.18 0.02 60);
+  --long: oklch(0.66 0.18 150);
+  --short: oklch(0.63 0.24 356);
+  --border: oklch(0.905 0.01 40);
+  --input: oklch(0.955 0.008 40);
+  --ring: var(--brand-copper);
+
+  --sidebar: oklch(0.975 0.008 50);
+  --sidebar-foreground: oklch(0.22 0.01 300);
+  --sidebar-primary: var(--brand-copper);
+  --sidebar-primary-foreground: oklch(0.99 0.002 0);
+  --sidebar-accent: oklch(0.94 0.06 40);
+  --sidebar-accent-foreground: oklch(0.28 0.18 356);
+  --sidebar-border: oklch(0.905 0.01 40);
+  --sidebar-ring: var(--brand-copper);
+}
+
+/* Dark theme — Sunset Blaze on charcoal graphite */
+.dark {
+  --brand-flame:    oklch(0.76 0.20 40);
+  --brand-ember:    oklch(0.82 0.17 65);
+  --brand-copper:   oklch(0.68 0.24 356);
+  --brand-violet:   oklch(0.66 0.22 285);
+  --brand-charcoal: oklch(0.22 0.01 300);
+
+  --background: oklch(0.155 0.01 300);
+  --foreground: oklch(0.965 0.005 60);
+  --card: oklch(0.205 0.012 300);
+  --card-foreground: oklch(0.965 0.005 60);
+  --popover: oklch(0.215 0.012 300);
+  --popover-foreground: oklch(0.965 0.005 60);
+  --primary: var(--brand-copper);
+  --primary-foreground: oklch(0.99 0.005 40);
+  --secondary: oklch(0.26 0.03 300);
+  --secondary-foreground: oklch(0.965 0.005 60);
+  --muted: oklch(0.235 0.015 300);
+  --muted-foreground: oklch(0.74 0.02 60);
+  --accent: oklch(0.34 0.14 356);
+  --accent-foreground: oklch(0.97 0.06 40);
+  --destructive: oklch(0.68 0.24 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --success: oklch(0.76 0.18 150);
+  --success-foreground: oklch(0.12 0.02 150);
+  --warning: oklch(0.82 0.17 68);
+  --warning-foreground: oklch(0.18 0.02 60);
+  --long: oklch(0.78 0.19 150);
+  --short: oklch(0.72 0.24 356);
+  --border: oklch(0.30 0.02 300);
+  --input: oklch(0.245 0.015 300);
+  --ring: var(--brand-copper);
+
+  --sidebar: oklch(0.135 0.015 300);
+  --sidebar-foreground: oklch(0.94 0.005 60);
+  --sidebar-primary: var(--brand-copper);
+  --sidebar-primary-foreground: oklch(0.99 0.005 40);
+  --sidebar-accent: oklch(0.30 0.12 356);
+  --sidebar-accent-foreground: oklch(0.98 0.07 40);
+  --sidebar-border: oklch(0.26 0.02 300);
+  --sidebar-ring: var(--brand-copper);
+}
+
+
+
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv02", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  code, kbd, pre, samp, .font-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: "zero", "ss01";
+  }
+  button, a, [role="button"], [data-slot] {
+    transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :where(a, button, [role="button"], input, select, textarea, summary):focus-visible {
+    outline: 2px solid color-mix(in oklch, var(--color-ring) 85%, transparent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--color-primary) 40%, transparent);
+    color: var(--color-foreground);
+  }
+
+  /* Solid ambient background */
+  body {
+    background-color: var(--color-background);
+    background-image: none;
+  }
+  .dark body {
+    background-color: var(--color-background);
+    background-image: none;
+  }
+
+  /* Bento card — solid tinted surface */
+  [data-slot="card"] {
+    position: relative;
+    background: color-mix(in oklch, var(--brand-copper) 4%, var(--color-card));
+    border-color: color-mix(in oklch, var(--brand-copper) 22%, var(--color-border));
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 2px 0 color-mix(in oklch, black 15%, transparent);
+  }
+  .dark [data-slot="card"] {
+    background: color-mix(in oklch, var(--brand-copper) 6%, var(--color-card));
+    border-color: color-mix(in oklch, var(--brand-copper) 28%, var(--color-border));
+    box-shadow: 0 1px 2px 0 color-mix(in oklch, black 30%, transparent);
+  }
+
+  /* Solid sunset accent strip on every card */
+  [data-slot="card"]::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    background: var(--brand-copper);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  [data-slot="card-title"] {
+    color: var(--brand-ember);
+    font-family: var(--font-display);
+  }
+  [data-slot="card-header"] {
+    border-bottom: 1px solid color-mix(in oklch, var(--brand-copper) 18%, transparent);
+    background: color-mix(in oklch, var(--brand-copper) 5%, transparent);
+  }
+
+  /* Tabs — solid active pill, disabled-looking inactive tabs */
+  [data-slot="tabs-list"] {
+    background: color-mix(in oklch, var(--brand-copper) 8%, var(--color-muted));
+    border: 1px solid color-mix(in oklch, var(--brand-copper) 22%, var(--color-border));
+  }
+  [data-slot="tabs-trigger"] {
+    color: color-mix(in oklch, var(--color-muted-foreground) 70%, transparent);
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: opacity 0.15s ease, filter 0.15s ease, color 0.15s ease;
+  }
+  [data-slot="tabs-trigger"]:hover:not([data-state="active"]) {
+    opacity: 0.85;
+    color: var(--color-foreground);
+  }
+  [data-slot="tabs-trigger"][data-state="active"] {
+    background: var(--brand-copper);
+    color: white !important;
+    filter: none;
+    opacity: 1;
+  }
+
+  /* Badges — outline variant picks up sunset border */
+  [data-slot="badge"] {
+    border-color: color-mix(in oklch, var(--brand-copper) 30%, var(--color-border));
+  }
+
+
+  /* Inputs — flat with focus ember */
+  [data-slot="input"], [data-slot="textarea"], [data-slot="select-trigger"] {
+    background: color-mix(in oklch, var(--color-input) 90%, transparent);
+    border-color: color-mix(in oklch, var(--color-border) 100%, transparent);
+  }
+  [data-slot="input"]:focus, [data-slot="textarea"]:focus,
+  [data-slot="input"]:focus-visible, [data-slot="textarea"]:focus-visible,
+  [data-slot="select-trigger"]:focus {
+    border-color: color-mix(in oklch, var(--color-primary) 60%, var(--color-border));
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-primary) 20%, transparent);
+  }
+
+  /* Buttons — subtle hover lift */
+  [data-slot="button"]:not(:disabled):hover {
+    box-shadow: 0 8px 20px -12px color-mix(in oklch, var(--color-primary) 55%, transparent);
+  }
+
+  /* Tables — mono column headers, ember hover */
+  table { border-collapse: separate; border-spacing: 0; }
+  th {
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--color-muted-foreground);
+    font-family: var(--font-mono);
+  }
+  tbody tr { transition: background-color 180ms ease; }
+  tbody tr:hover {
+    background: linear-gradient(90deg,
+      color-mix(in oklch, var(--brand-flame) 8%, transparent),
+      color-mix(in oklch, var(--brand-copper) 8%, transparent) 60%,
+      color-mix(in oklch, var(--brand-violet) 6%, transparent));
+  }
+
+  /* Numeric-heavy cells look right in mono */
+  td.tabular, td[data-tabular="true"], .tabular-nums { font-variant-numeric: tabular-nums; }
+
+  /* ---- Global compact density ---- */
+  [data-slot="card-header"] {
+    padding: 0.625rem 0.875rem !important;
+    gap: 0.25rem !important;
+  }
+  [data-slot="card-content"] { padding: 0.625rem 0.875rem !important; }
+  [data-slot="card-footer"] { padding: 0.5rem 0.875rem !important; }
+  [data-slot="card-title"] { font-size: 0.9rem; line-height: 1.2; }
+  [data-slot="card-description"] { font-size: 0.75rem; }
+
+  th, td { padding: 0.375rem 0.625rem !important; }
+  th { font-size: 0.65rem; }
+  td { font-size: 0.8125rem; }
+
+  [data-slot="input"], [data-slot="select-trigger"] { height: 2rem; font-size: 0.8125rem; }
+  [data-slot="textarea"] { font-size: 0.8125rem; }
+  [data-slot="label"] { font-size: 0.75rem; }
+
+  [data-slot="tabs-list"] { height: 2rem; padding: 2px; }
+  [data-slot="tabs-trigger"] { padding: 0.25rem 0.625rem; font-size: 0.8125rem; }
+
+  [data-slot="badge"] { padding: 0.05rem 0.4rem; font-size: 0.68rem; }
+
+  /* Mobile-friendly defaults */
+  html, body { overflow-x: clip; }
+  main { min-width: 0; }
+  @media (max-width: 767px) {
+    main table {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+    main .recharts-responsive-container { max-width: 100%; }
+    main pre { overflow-x: auto; max-width: 100%; }
+    main p, main li, main dd, main dt { overflow-wrap: anywhere; }
+  }
+
+  /* Custom scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--color-primary) 40%, transparent) transparent;
+  }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-thumb {
+    background: var(--brand-copper);
+    border-radius: 999px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-ember);
+  }
+
+  /* Route transitions */
+  @keyframes shark-fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in { animation: shark-fade-in 260ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+  @keyframes shark-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+@utility text-long { color: var(--color-long); }
+@utility text-short { color: var(--color-short); }
+@utility bg-long-soft { background-color: color-mix(in oklch, var(--color-long) 15%, transparent); color: var(--color-long); }
+@utility bg-short-soft { background-color: color-mix(in oklch, var(--color-short) 15%, transparent); color: var(--color-short); }
+@utility bg-warning-soft { background-color: color-mix(in oklch, var(--color-warning) 15%, transparent); color: var(--color-warning); }
+@utility bg-success-soft { background-color: color-mix(in oklch, var(--color-success) 15%, transparent); color: var(--color-success); }
+@utility bg-destructive-soft { background-color: color-mix(in oklch, var(--color-destructive) 15%, transparent); color: var(--color-destructive); }
+@utility card-hover {
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -18px color-mix(in oklch, var(--color-primary) 55%, transparent);
+    border-color: color-mix(in oklch, var(--color-primary) 55%, var(--color-border));
+  }
+}
+@utility glass-panel {
+  background: color-mix(in oklch, var(--color-card) 82%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklch, var(--color-primary) 14%, var(--color-border));
+  box-shadow:
+    0 1px 0 0 color-mix(in oklch, white 5%, transparent) inset,
+    0 20px 50px -28px color-mix(in oklch, var(--color-primary) 50%, transparent);
+}
+@utility text-gradient-primary {
+  color: var(--brand-ember);
+}
+@utility text-gradient-sunset {
+  color: var(--brand-ember);
+}
+@utility bg-gradient-sunset {
+  background-image: none;
+  background-color: var(--brand-copper);
+}
+@utility bg-gradient-sunset-vivid {
+  background-image: none;
+  background-color: var(--brand-copper);
+  color: white;
+}
+@utility bg-gradient-sunset-soft {
+  background-image: none;
+  background-color: color-mix(in oklch, var(--brand-copper) 8%, var(--color-card));
+}
+@utility ring-sunset {
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--brand-copper) 45%, transparent);
+}
+@utility glow-sunset {
+  box-shadow: none;
+}
+@utility border-gradient-sunset {
+  border: 1px solid color-mix(in oklch, var(--brand-copper) 40%, var(--color-border));
+}
+@utility hairline {
+  border-color: color-mix(in oklch, var(--color-border) 70%, transparent);
+}
+@utility surface-1 {
+  background: color-mix(in oklch, var(--color-card) 92%, transparent);
+  border: 1px solid color-mix(in oklch, var(--color-border) 80%, transparent);
+}
+@utility shimmer {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in oklch, var(--brand-flame) 22%, transparent) 40%,
+    color-mix(in oklch, var(--brand-ember) 22%, transparent) 60%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: shark-shimmer 2.4s linear infinite;
+}

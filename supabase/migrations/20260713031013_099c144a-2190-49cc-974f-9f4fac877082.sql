@@ -1,0 +1,1 @@
+ALTER TABLE public.strategy_setups ADD COLUMN IF NOT EXISTS sl_child_order_id text;

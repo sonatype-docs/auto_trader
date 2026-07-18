@@ -1,0 +1,2 @@
+alter table public.strategy_setups add column if not exists reprice_count integer not null default 0;
+alter table public.strategy_settings add column if not exists max_reprice_attempts integer not null default 5;

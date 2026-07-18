@@ -1,0 +1,1 @@
+ALTER TABLE public.strategy_setups ADD COLUMN IF NOT EXISTS exchange_order_id text;

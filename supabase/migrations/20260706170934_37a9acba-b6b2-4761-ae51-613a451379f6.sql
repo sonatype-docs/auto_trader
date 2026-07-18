@@ -1,0 +1,1 @@
+ALTER TABLE public.strategy_settings ADD COLUMN IF NOT EXISTS skip_weekends boolean NOT NULL DEFAULT false;
