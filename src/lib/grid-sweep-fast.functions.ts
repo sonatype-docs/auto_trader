@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getKlineSource, type KlineSourceId } from "@/lib/exchange/kline-source.server";
+import type { Kline } from "@/lib/exchange/shark-client.server";
 import { simulateFromKlines } from "@/lib/strategy/backtest-range.server";
 
 const EntryModeEnum = z.enum(["fib", "retest", "market", "adaptive"]);
@@ -128,7 +129,7 @@ export const backtestGridSweepFast = createServerFn({ method: "POST" })
     // re-fetched 1h + daily data for every combination, which made the UI look
     // stuck and could exhaust upstream/API timeouts.
     const uniqueSources = [...new Set(combos.map((c) => c.data_source))] as KlineSourceId[];
-    const datasets = new Map<KlineSourceId, Awaited<ReturnType<ReturnType<typeof getKlineSource>["getKlinesRange"]>>>();
+    const datasets = new Map<KlineSourceId, Kline[]>();
 
     await Promise.all(uniqueSources.map(async (sourceId) => {
       const source = await getKlineSource(sourceId);
