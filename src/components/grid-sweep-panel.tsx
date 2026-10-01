@@ -99,6 +99,19 @@ export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
   const [zoneSources, setZoneSources] = useState<Array<"range" | "breakout">>([defaults.zoneSource]);
   const [dataSources, setDataSources] = useState<Array<"shark" | "yahoo">>([defaults.dataSource]);
   const [maxCombos, setMaxCombos] = useState<number>(100);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+
+  useEffect(() => {
+    if (!mut.isPending) {
+      setElapsedSeconds(0);
+      return;
+    }
+    const started = Date.now();
+    const timer = window.setInterval(() => {
+      setElapsedSeconds((Date.now() - started) / 1000);
+    }, 250);
+    return () => window.clearInterval(timer);
+  }, [mut.isPending]);
 
   const toggle = <T extends string | number | boolean>(list: T[], v: T, setter: (n: T[]) => void) => {
     const has = list.some((x) => String(x) === String(v));
@@ -315,8 +328,9 @@ export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t pt-4">
-          <div className="text-[11px] text-muted-foreground">
-            <span className="font-mono text-foreground">{comboCount.toLocaleString()}</span> combinations
+          <div className="min-w-0 flex-1 text-[11px] text-muted-foreground">
+            <div>
+              <span className="font-mono text-foreground">{comboCount.toLocaleString()}</span> combinations
             {comboCount > maxCombos && (
               <span className="ml-2 text-amber-600 dark:text-amber-400">
                 (capped at {maxCombos})
@@ -327,6 +341,17 @@ export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
                 · ran <span className="font-mono text-foreground">{mut.data.total_combos}</span> in{" "}
                 <span className="font-mono text-foreground">{(mut.data.elapsed_ms / 1000).toFixed(1)}s</span>
               </span>
+            )}
+            {mut.isPending && (
+              <span className="ml-3 font-mono text-primary">
+                · processing {Math.min(comboCount, maxCombos).toLocaleString()} combos · {elapsedSeconds.toFixed(1)}s
+              </span>
+            )}
+            </div>
+            {mut.isPending && (
+              <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                <div className="h-full w-1/3 animate-[pulse_1.2s_ease-in-out_infinite] rounded-full bg-primary" />
+              </div>
             )}
           </div>
           <div className="flex gap-2">
