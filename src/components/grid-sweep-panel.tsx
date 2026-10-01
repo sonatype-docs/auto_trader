@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { backtestGridSweep } from "@/lib/strategy.functions";
+import { backtestGridSweepFast } from "@/lib/grid-sweep-fast.functions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -81,7 +81,7 @@ function Chips<T extends string | number | boolean>({
 }
 
 export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
-  const run = useServerFn(backtestGridSweep);
+  const run = useServerFn(backtestGridSweepFast);
 
   // Each axis: default to a single-item set = current form value, so the user
   // opts in to sweeping by adding more values.
