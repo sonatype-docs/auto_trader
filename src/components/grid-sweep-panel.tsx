@@ -101,18 +101,6 @@ export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
   const [maxCombos, setMaxCombos] = useState<number>(100);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
-  useEffect(() => {
-    if (!mut.isPending) {
-      setElapsedSeconds(0);
-      return;
-    }
-    const started = Date.now();
-    const timer = window.setInterval(() => {
-      setElapsedSeconds((Date.now() - started) / 1000);
-    }, 250);
-    return () => window.clearInterval(timer);
-  }, [mut.isPending]);
-
   const toggle = <T extends string | number | boolean>(list: T[], v: T, setter: (n: T[]) => void) => {
     const has = list.some((x) => String(x) === String(v));
     setter(has ? list.filter((x) => String(x) !== String(v)) : [...list, v]);
@@ -174,6 +162,19 @@ export function GridSweepPanel({ defaults }: { defaults: Defaults }) {
     },
     onError: (e) => toast.error(e instanceof Error ? e.message : "Grid sweep failed"),
   });
+
+
+  useEffect(() => {
+    if (!mut.isPending) {
+      setElapsedSeconds(0);
+      return;
+    }
+    const started = Date.now();
+    const timer = window.setInterval(() => {
+      setElapsedSeconds((Date.now() - started) / 1000);
+    }, 250);
+    return () => window.clearInterval(timer);
+  }, [mut.isPending]);
 
   const [sortKey, setSortKey] = useState<SortKey>("net_pnl_usd");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
